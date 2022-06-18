@@ -42,12 +42,12 @@ BroadcastReceiver中onReceive代码也要尽量减少耗时，建议使用Intent
 
 [深入回答](http://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649493643&idx=1&sn=34b51d1f61bd2ecaa8fd0a2d39c4d1d1&chksm=8eec9b74b99b126246acc4547597dfe55c836b8f689b2d1a65bdf1ee2054ced2fc070bfa2678&mpshare=1&scene=24&srcid=0116vzNfMMv2dLizhAT8mEYq#rd)
 
-    
+
 #### 2、Activity和Fragment生命周期有哪些？
 
 ![image](https://upload-images.jianshu.io/upload_images/2893137-d63537703193a6d1.png?imageMogr2/auto-orient/)
 
-    
+
 #### 3、横竖屏切换时候Activity的生命周期
 
 不设置Activity的android:configChanges时，切屏会重新回调各个生命周期，切横屏时会执行一次，切竖屏时会执行两次。
@@ -97,7 +97,7 @@ AsyncTask里面线程池是一个核心线程数为CPU + 1，最大线程数为C
 
 - AsyncTask中有两个线程池（SerialExecutor和THREAD_POOL_EXECUTOR）和一个Handler（InternalHandler），其中线程池SerialExecutor用于任务的排队，而线程池THREAD_POOL_EXECUTOR用于真正地执行任务，InternalHandler用于将执行环境从线程池切换到主线程。
 - sHandler是一个静态的Handler对象，为了能够将执行环境切换到主线程，这就要求sHandler这个对象必须在主线程创建。由于静态成员会在加载类的时候进行初始化，因此这就变相要求AsyncTask的类必须在主线程中加载，否则同一个进程中的AsyncTask都将无法正常工作。
-    
+  
 
 #### 5、onSaveInstanceState() 与 onRestoreIntanceState()
 
@@ -272,8 +272,9 @@ ART,第一次安装应用的时候,字节码就会预先编译成机器码(AOT)�
     通知超时
     通知设置
     通知清除
-    
-    
+
+
+​    
 - **画中画模式**：清单中Activity设置android:supportsPictureInPicture
 - **后台限制**
 
@@ -315,19 +316,20 @@ JSON是轻量级的文本数据交换格式，独立于语言，具有可描述�
 
     Gson gson = new Gson();
     Student student = gson.fromJson(json1, Student.class);
-    
+
 
 2、解析成int数组：
 
     Gson gson = new Gson();
     int[] ages = gson.fromJson(json2, int[].class);
-    
-        
+
+
+​        
 3、直接解析成List.
 
     Gson gson = new Gson();
     List<Integer> ages = gson.fromJson(json2,  newTypeToken<List<Integer>>(){}.getType);
-
+    
     Gson gson = new Gson();
     List<Student> students = gson.fromJson(json3, newTypeToke<List<Student>>(){}.getType);
 
@@ -455,7 +457,7 @@ res/anim：存放动画资源。
 
 res/raw：和 asset 下文件一样，打包时直接打入程序安装包中（会映射到 R 文件中）。
 
-    
+
 #### 22、Android怎么加速启动Activity？
 
 - onCreate() 中不执行耗时操作
@@ -464,7 +466,7 @@ res/raw：和 asset 下文件一样，打包时直接打入程序安装包中（
 - 减少主线程阻塞时间。
 - 提高 Adapter 和 AdapterView 的效率。
 - 优化布局文件。
-     
+  
      
 #### 23、Handler机制
 
@@ -625,7 +627,7 @@ Android中的线程池都是直接或间接通过配置ThreadPoolExecutor来实�
     ... ... 
     return view; 
     }
-    
+
 修正示例代码：
 
     public View getView(int position, ViewconvertView, ViewGroup parent) {
@@ -640,7 +642,7 @@ Android中的线程池都是直接或间接通过配置ThreadPoolExecutor来实�
     } 
     return view; 
     }
-    
+
 3.Bitmap对象不在使用时调用recycle()释放内存
 
 描述： 有时我们会手工的操作Bitmap对象，如果一个Bitmap对象比较占内存，当它不在被使用的时候，可以调用Bitmap.recycle()方法回收此对象的像素所占用的内存，但这不是必须的，视情况而定。可以看一下代码中的注释：
@@ -736,7 +738,7 @@ json简单说就是对象和数组，所以这两种结构就是对象和数组�
             return false;
         }
     }
-    
+
 
 #### 35、Android为什么引入Parcelable？
 
@@ -827,15 +829,15 @@ save和restore要配对使用（restore可以比save少，但不能多），如�
         switch (newVersion) {
             case 2:
                 db.beginTransaction();
-
+    
                 db.execSQL(CREATE_TEMP_BOOK);
                 db.execSQL(CREATE_BOOK);
                 db.execSQL(INSERT_DATA);
                 db.execSQL(DROP_BOOK);
-
+    
                 db.setTransactionSuccessful();
                 db.endTransaction();
-
+    
                 break;
         }
     }
@@ -999,7 +1001,7 @@ BitmapFactory.Options.inPurgeable：让系统可以内存不足时回收内存�
             _360 {}        // 或“"360"{}”，数字需下划线开头或加上双引号
         }
     }
-    
+
 执行./gradlew assembleRelease ，将会打出所有渠道的release包；
 
 执行./gradlew assembleWandoujia，将会打出豌豆荚渠道的release和debug版的包；
@@ -1083,7 +1085,7 @@ ddms 原意是：davik debug monitor service。简单的说 ddms 是一个程序
 
 Traceview 是 Android 平台特有的数据采集和分析工具，它主要用于分析 Android 中应用程序的 hotspot（瓶颈）。Traceview 本身只是一个数据分析工具，而数据的采集则需要使用 Android SDK 中的 Debug 类或者利用DDMS 工具。二者的用法如下：开发者在一些关键代码段开始前调用 Android SDK 中 Debug 类的 startMethodTracing 函数，并在关键代码段结束前调用 stopMethodTracing 函数。这两个函数运行过程中将采集运行时间内该应用所有线程（注意，只能是 Java线程） 的函数执行情况， 并将采集数据保存到/mnt/sdcard/下的一个文件中。 开发者然后需要利用 SDK 中的 Traceview工具来分析这些数据。
 
-    
+
 #### 61、ListView卡顿原因
 
 Adapter的getView方法里面convertView没有使用setTag和getTag方式；
@@ -1285,7 +1287,7 @@ HttpURLConnection对于大部分功能都进行了包装，Http Client的高级�
     Activity B：onStart
     Activity B：onResume
     Activity A：onStop
-    
+
 ##### ActivityB返回ActivityA：
 
     Activity B：onPause
@@ -1417,7 +1419,7 @@ android系统下数据库应该存放在 /data/data/com.（package name）/ 目�
 RelativeLayout会让子View调用2次onMeasure，LinearLayout 在有weight时，也会调用子 View 2次onMeasure
 
 RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，这个问题会更加严重。如果可以，尽量使用padding代替margin。
- 
+
 在不影响层级深度的情况下,使用LinearLayout和FrameLayout而不是RelativeLayout。
 
 #### 为什么Google给开发者默认新建了个RelativeLayout，而自己却在DecorView中用了个LinearLayout？
@@ -1477,11 +1479,11 @@ IntentService是一种特殊的Service，它继承了Service并且它是一个�
 <activity>中配置：
 
     android:theme="@android:style/Theme.Dialog"
-    
+
 另外 
 
     android:theme="@android:style/Theme.Translucnt"
-    
+
 是设置透明。
 
 
